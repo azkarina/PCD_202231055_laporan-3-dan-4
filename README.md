@@ -7,20 +7,20 @@ Repository ini dibuat untuk menyelesaikan tugas laporan praktikum yang membahas 
 Edge Detection yang kita kenal juga dengan deteksi tepi adalah cara-cara matematis untuk mengenali titik-titik dalam citra digital yang kecerahannya berubah drastis atau, secara formal, memiliki diskontinuitas. 
 
 ### Tahapan program
-    1. Import library
+1. Import library
 library yang digunakan adalah cv2, numpy, dan matplotlib
     
 * **cv2** digunakan untuk memproses gambar
 * **numpy** digunakan untuk melakukan operasi matematika, mengubah bentuk array, dan menghitung statistik
 * **matplotlib** digunakan untuk memvisualisasi data 
 
-    2. Memanggil gambar
+2. Memanggil gambar
 Dengan menggunakan fungsi imread yang ada di library cv2 kita bisa memanggil gambar dari device.
 
-    3. Konversi citra dari RGB ke GRAY
+3. Konversi citra dari RGB ke GRAY
 Dengan memanfaatkan fungsi cvtColor yang dimiliki cv2 kita bisa mengubah citra yang awalnya bermodel RGB (memiliki 3 saluran warna) dikonversi ke GRAY yang hanya memiliki 1 saluran warna. Konversi citra ini dilakukan agar mendapatkan hasil yang baik.
 
-    4. Mendeteksi ambang batas dari tepi
+4. Mendeteksi ambang batas dari tepi
 Dengan menggunakan fungsi canny yang dimiliki cv2 kita bisa mendeteksi ambang batas tepi dari sebuah citra.
 Paramater yang ada dalam fungsi canny
     
@@ -32,10 +32,10 @@ Paramater yang ada dalam fungsi canny
 
 Fungsi ini akan menghasilkan citra biner, dimana piksel yang dianggap tepi akan diberi nilai 255(putih) dan yang lainnya 0(hitam)
 
-    5. Transformasi hough
+5. Transformasi hough
 Transformasi Hough merupakan salah satu metode pengolahan citra yang dapat digunakan untuk mendeteksi garis dan lingkaran pada suatu citra digital. Metode ini bekerja dengan cara mencari hubungan ketetanggaan antar piksel menggunakan persamaan garis lurus untuk mendeteksi garis dan persamaan lingkaran untuk mendeteksi lingkaran.
 
-    cv2.HoughLinesP(edges, 1, np.pi/180, 225, maxLineGap=65)
+   cv2.HoughLinesP(edges, 1, np.pi/180, 225, maxLineGap=65)
 
 Fungsi ini menghitung garis-garis yang terdeteksi dalam citra menggunakan Transformasi Hough Probabilistik. Paramater dalam fungsi ini antara lain:
 * **edges** yang merupakan hasil deteksi tepi menggunakan fungsi canny
@@ -45,7 +45,7 @@ Fungsi ini menghitung garis-garis yang terdeteksi dalam citra menggunakan Transf
 
 * **maxLineGap=65** merupajan jarak maksimum antara dua titik yang dianggap sebagai bagian dari garis yang sama.  Semakin besar nilainya memungkinkan semakin banyak garis yang lebih terputus-putus untuk dideteksi.
 
-    6. Menggambar garis
+6. Menggambar garis
 Dengan menggunakan looping kita akan mengiterasi  setiap garis yang terdeteksi oleh metode Hough Probabilistik untuk digambarkan garis. Setiap garis ini direpresentasikan oleh x1,y1 sebagai titik awal dan x2,y2 sebagai titik akhir
 
     cv2.line(image_line, (x1, y1), (x2, y2), (255,0,0), 4)
